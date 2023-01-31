@@ -4,6 +4,7 @@ require("dotenv").config({ path: "./config/.env" });
 const db = require("./config/db");
 require("colors");
 db();
+app.use(express.static("public"));
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 console.log(process.env.PORT);
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use(express.json());
+
 app.use("/blog", require("./Routes/blogRoutes"));
 
 app.listen(PORT, console.log(`server running http://localhost:${PORT}`.bgBlue));
